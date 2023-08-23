@@ -13,6 +13,7 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -40,6 +41,7 @@ public class Employee implements Serializable {
     @GeneratedValue(strategy = IDENTITY)
     private String id;
     private String cin;
+    @Transient
     private String cnaps;
     private String image;
     private String address;
