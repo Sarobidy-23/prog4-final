@@ -1,6 +1,7 @@
 package com.example.prog4.cnaps.entity;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -23,5 +24,8 @@ public class Cnaps implements Serializable {
   @Id
   @GeneratedValue(strategy = IDENTITY)
   private String id;
-  private String serialNumber;
+  @Column(name = "cnaps_number")
+  private String cnapsNumber;
+  @Column(name = "end_to_end_id", unique = true)
+  private String endToEndId;
 }
