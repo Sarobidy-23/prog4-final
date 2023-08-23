@@ -19,8 +19,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @EqualsAndHashCode
-@Table(name = "\"Cnaps\"")
-public class Cnaps implements Serializable {
+@Table(name = "\"cnaps_employee\"")
+public class CnapsEmployee implements Serializable {
   @Id
   @GeneratedValue(strategy = IDENTITY)
   private String id;

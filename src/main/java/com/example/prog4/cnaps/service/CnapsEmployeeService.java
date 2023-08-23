@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class CnapsService {
+public class CnapsEmployeeService {
   private final CnapsEmployeeRepository cnapsRepository;
 
   public List<CnapsEmployee> getAll () {
