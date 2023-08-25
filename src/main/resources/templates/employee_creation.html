@@ -72,6 +72,11 @@
             </select>
         </div>
         <div class="col-md-6">
+            <label for="sex" class="form-label">Gross salary</label>
+            <input required id="salary" name="departureDate" th:field="*{salary}" type="number" min="200000"
+                   class="form-control">
+        </div>
+        <div class="col-md-6">
             <label for="csp" class="form-label">CSP</label>
             <select id="csp" name="csp" class="form-select" th:field="*{csp}">
                 <option selected value="">Chose your CSP</option>

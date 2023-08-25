@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PDF generator</title>
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .top-container {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            width: 100%;
+            position: relative;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header-img {
+            height: 220px;
+            width: 220px;
+            object-fit: cover;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+        }
+
+        .footer-img {
+            height: 100px;
+            width: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            top: 0;
+            left: 0;
+        }
+
+        .title {
+            width: 100%;
+            padding-bottom: 20px;
+            text-align: center;
+        }
+
+        footer {
+            border-top: 2px solid black;
+            position: absolute;
+            bottom: 100px;
+            left: 0;
+            width: 100%;
+            padding-top: 10px;
+        }
+
+        .footer-middle {
+            margin-left: 30px;
+        }
+
+        .footer-end {
+            margin-left: 30px;
+        }
+
+        .footer {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            position: relative;
+            width: 100vw;
+        }
+
+    </style>
+</head>
+<body>
+<div class="top-container">
+    <img class="header-img" th:src="${employee.stringImage}" alt="no image" src="#"/>
+    <div >
+        <h3 class="title">Worker's sheet</h3>
+        <span>Registration Number: <span th:text="${employee.registrationNumber}"></span></span><br>
+        <span>Last name: <span th:text="${employee.lastName}"></span></span><br>
+        <span>First name: <span th:text="${employee.firstName}"></span></span><br>
+        <span>Age: <span th:text="${employee.age}"></span></span><br>
+        <span>Entrance date: <span th:text="${employee.entranceDate}"></span></span><br>
+        <span>Departure date: <span th:text="${employee.departureDate}"></span></span><br>
+        <span>Cnaps number: <span th:text="${employee.cnaps}"></span></span><br>
+    </div>
+</div>
+<div>
+    <h3 style="padding-bottom: 10px">Salary information:</h3>
+    <span style="margin-left: 30px">Current gross salary: <span th:text="${employee.salary}"></span> Ariary / Month</span>
+</div>
+<footer>
+    <div class="footer">
+        <img class="footer-img" th:src="${company.logo}" alt="no image" src="#"/>
+        <div class="footer-middle">
+            <p>Company: <span th:text="${company.name}"></span></p>
+            <p>NIF: <span th:text="${company.taxIdentity.nif}"></span></p>
+            <p>STAT: <span th:text="${company.taxIdentity.stat}"></span></p>
+        </div>
+        <div class="footer-end">
+            <p>Address: <span th:text="${company.address}"></span></p>
+            <div style="padding-bottom: 20px">
+                <span>Phone : </span>
+                <span th:each="phone : ${company.phones}">
+                    <span th:text="${phone.value}"></span>
+                </span>
+            </div>
+            <p>Email: <span th:text="${company.email}"></span></p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
