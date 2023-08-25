@@ -6,6 +6,8 @@ import com.example.prog4.repository.PositionRepository;
 import com.example.prog4.repository.entity.Phone;
 import com.example.prog4.repository.entity.Position;
 import jakarta.transaction.Transactional;
+import java.time.LocalDate;
+import java.time.Period;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
@@ -57,6 +59,7 @@ public class EmployeeMapper {
                     // lists
                     .phones(phones)
                     .positions(positions)
+                    .salary(employee.getSalary())
                     .build();
             MultipartFile imageFile = employee.getImage();
             if (imageFile != null && !imageFile.isEmpty()) {
@@ -94,6 +97,16 @@ public class EmployeeMapper {
                 // lists
                 .phones(employee.getPhones().stream().map(phoneMapper::toView).toList())
                 .positions(employee.getPositions())
+                .salary(employee.getSalary())
+                .age(getAge(employee.getBirthDate()))
                 .build();
+    }
+    private int getAge(LocalDate birthDate) {
+        LocalDate currentDate = LocalDate.now();
+        if (birthDate != null) {
+            return Period.between(birthDate, currentDate).getYears();
+        } else {
+            throw new IllegalArgumentException("Birth date is null.");
+        }
     }
 }

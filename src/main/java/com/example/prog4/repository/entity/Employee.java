@@ -84,4 +84,6 @@ public class Employee implements Serializable {
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "employee_id", referencedColumnName = "id")
     private List<Phone> phones;
+    @Column(name = "salary")
+    private int salary;
 }
